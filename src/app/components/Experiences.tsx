@@ -10,6 +10,7 @@ import {
   LuLeaf,
   LuGlobe,
 } from "react-icons/lu";
+import { ReactNode } from "react";
 
 const features = [
   {
@@ -109,7 +110,17 @@ export const Experiences = () => {
 };
 
 // Feature Card Component with Animation
-const FeatureCard = ({ title, description, icon, index }: any) => {
+const FeatureCard = ({
+  title,
+  description,
+  icon,
+  index,
+}: {
+  title: string;
+  description: string;
+  icon: ReactNode;
+  index: number;
+}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
