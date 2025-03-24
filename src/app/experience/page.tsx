@@ -46,11 +46,6 @@ export default function SkySafariExperience() {
     },
   ];
 
-  const openModal = (image: string) => {
-    setSelectedImage(image);
-    setIsOpen(true);
-  };
-
   return (
     <main className="bg-gray-100 min-h-screen">
       {/* Hero Section */}
