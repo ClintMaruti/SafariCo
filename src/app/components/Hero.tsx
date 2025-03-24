@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { NavBar } from "./NavBar";
 
 export const Hero: React.FC = () => {
   // State to track scrolling for parallax effect
@@ -33,20 +33,9 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Navbar */}
-      <nav className="absolute top-0 left-0 w-full flex justify-between items-center p-6 bg-black/50 text-white">
-        <h1 className="text-2xl font-bold tracking-wide">
-          <Image
-            src="/images/skysafari-logo-full-01.svg"
-            alt="SkySafari Logo"
-            width={200}
-            height={50}
-            priority
-          />
-        </h1>
-        <button className="bg-[#b4a269] px-6 py-2 rounded-full text-white text-sm tracking-widest transform transition-transform hover:scale-110">
-          ENQUIRE
-        </button>
-      </nav>
+      <div className="relative z-10">
+        <NavBar />
+      </div>
 
       {/* Hero Content */}
       <motion.div

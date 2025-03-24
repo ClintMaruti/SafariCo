@@ -4,9 +4,9 @@ import { ContactUsSection } from "../components/ContactUsSection";
 import { Footer } from "../components/Footer";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
+import { HeroSection } from "../components/HeroSection";
 
 export default function SkySafariExperience() {
-  // const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const aircraft_images = [
@@ -22,7 +22,6 @@ export default function SkySafariExperience() {
     { src: "/images/ss_aircraft_04.jpg", title: "Wildlife Expedition" },
     { src: "/images/ss_aircraft_05.jpg", title: "Romantic Getaway" },
     { src: "/images/ss_aircraft_06.jpg", title: "Family Safari" },
-    { src: "/images/ss_aircraft_07.jpg", title: "Family Safari" },
     { src: "/images/ss_aircraft_08.jpg", title: "Family Safari" },
     { src: "/images/ss_aircraft_09.jpg", title: "Family Safari" },
   ];
@@ -48,17 +47,13 @@ export default function SkySafariExperience() {
 
   return (
     <main className="bg-gray-100 min-h-screen">
-      {/* Hero Section */}
-      <section className="relative w-full h-[400px] bg-[url('/images/Amboseli-Elephants.jpg')] bg-cover bg-center flex items-center justify-center">
-        <div className="bg-black/50 p-6 text-white text-center">
-          <h1 className="text-6xl font-light">SkySafari Experience</h1>
-          <p className="mt-2 text-md tracking-widest">
-            A journey through Africa’s breathtaking landscapes
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        imageUrl="/images/Activities-SunriseDrive-Kilimanjaro.jpg"
+        title="The SkySafari Experience"
+        description="A journey through Africa’s breathtaking landscapes"
+      />
 
-      <section className="container max-w-3/4 mx-auto mt-12">
+      <section className="container max-w-3/4 mx-auto py-16">
         <h2 className="text-center text-4xl text-gray-400 ">
           A SkySafari is more than a holiday.
         </h2>
@@ -74,8 +69,31 @@ export default function SkySafariExperience() {
         </p>
       </section>
 
-      <MidSection />
-      {/* Gallery Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="relative py-16 flex items-center justify-center bg-cover bg-center bg-fixed"
+        style={{ backgroundImage: "url('/images/aircraft.jpg')" }}
+      >
+        {/* Subtle Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50 transition-all duration-500 hover:bg-black/60"></div>
+
+        {/* Content */}
+        <div className="relative text-center text-white max-w-5xl px-6 md:px-12">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-4xl md:text-5xl tracking-wide leading-16"
+          >
+            Personalised Service, Luxurious Accommodation, & Authentic African
+            Safari Experiences
+          </motion.h2>
+        </div>
+      </motion.section>
+
       <section className="mt-12 container mx-auto">
         <h2 className="text-3xl font-light text-center mb-8">
           Flying with us – Our Aircraft
@@ -90,7 +108,7 @@ export default function SkySafariExperience() {
           and direct: there’s no needless waiting or stops en route, you’ll be
           whisked straight into the wilderness.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
           {aircraft_images.map((item, index) => (
             <div key={index} className="relative group">
               <img
@@ -98,9 +116,6 @@ export default function SkySafariExperience() {
                 alt={item.title}
                 className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
               />
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                <p className="text-white text-xl font-semibold">{item.title}</p>
-              </div>
             </div>
           ))}
         </div>
@@ -120,20 +135,6 @@ export default function SkySafariExperience() {
           able to open your eyes to all the wonders, big and small, of the East
           African bush.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
-          {aircraft_images.map((item, index) => (
-            <div key={index} className="relative group">
-              <img
-                src={item.src}
-                alt={item.title}
-                className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
-              />
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                <p className="text-white text-xl font-semibold">{item.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
       <section className="mt-12 container mx-auto">
@@ -176,35 +177,6 @@ export default function SkySafariExperience() {
     </main>
   );
 }
-
-const MidSection = () => {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-      className="relative py-16 flex items-center justify-center bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: "url('/images/aircraft.jpg')" }}
-    >
-      {/* Subtle Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50 transition-all duration-500 hover:bg-black/60"></div>
-
-      {/* Content */}
-      <div className="relative text-center text-white max-w-5xl px-6 md:px-12">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-4xl md:text-5xl tracking-wide leading-16"
-        >
-          Personalised Service, Luxurious Accommodation, & Authentic African
-          Safari Experiences
-        </motion.h2>
-      </div>
-    </motion.section>
-  );
-};
 
 const ImageModal = ({
   isOpen,

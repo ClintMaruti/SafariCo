@@ -2,17 +2,7 @@
 import { motion } from "framer-motion";
 import { ContactUsSection } from "../components/ContactUsSection";
 import { Footer } from "../components/Footer";
-
-const HeroSection = () => {
-  return (
-    <section className="relative w-full h-[400px] bg-[url('/images/Amboseli-Elephants.jpg')] bg-cover bg-center flex items-center justify-center">
-      <div className="bg-black/50 p-6 text-white text-center">
-        <h1 className="text-6xl font-light">SkySafari Experience</h1>
-        <p className="mt-2 text-md tracking-widest">Extensions & Additions</p>
-      </div>
-    </section>
-  );
-};
+import { HeroSection } from "../components/HeroSection";
 
 const MidSection = ({ title, body }: { title: string; body: string }) => {
   return (
@@ -45,7 +35,10 @@ export default function Extensions() {
   return (
     <main className="bg-gray-100 min-h-screen">
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection
+        title="Extensions & Additions"
+        imageUrl="/images/extension.jpg"
+      />
 
       <MidSection
         title="Why not stay a little longer?"
