@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import {
   FaInstagram,
@@ -7,6 +8,52 @@ import {
   FaTwitter,
   FaTripadvisor,
 } from "react-icons/fa";
+
+// Footer menu mapping
+const footerMenu = [
+  {
+    title: "SkySafari",
+    links: [
+      { name: "Home", path: "/" },
+      { name: "The SkySafari Experience", path: "/skysafari-experience" },
+      {
+        name: "Safari Extensions & Additions",
+        path: "/extensions-and-additions",
+      },
+      {
+        name: "Conservation & Sustainability",
+        path: "/conservation-and-sustainability",
+      },
+      { name: "Special Offers", path: "/special-offers" },
+      { name: "Contact Us", path: "/contact-us" },
+    ],
+  },
+  {
+    title: "Breathtaking Adventures",
+    links: [
+      { name: "SkySafari Kenya", path: "/skysafari-kenya" },
+      { name: "SkySafari Tanzania", path: "/skysafari-tanzania" },
+      { name: "SkySafari East Africa", path: "/skysafari-east-africa" },
+    ],
+  },
+  {
+    title: "News & Information",
+    links: [
+      { name: "Travel Information", path: "/travel-information" },
+      { name: "Flight Luggage Guidelines", path: "/flight-luggage-guidelines" },
+      {
+        name: "Frequently Asked Questions",
+        path: "/frequently-asked-questions",
+      },
+      {
+        name: "Booking Terms & Conditions",
+        path: "/booking-terms-and-conditions",
+      },
+      { name: "Downloads", path: "/downloads" },
+      { name: "Subscribe", path: "/subscribe" },
+    ],
+  },
+];
 
 export const Footer = () => {
   return (
@@ -19,119 +66,30 @@ export const Footer = () => {
       <div className="container mx-auto px-6 md:px-12">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-gray-600 pb-8 text-center md:text-left">
-          {/* Column 1 - SkySafari */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h3 className="text-[#d4a373] font-semibold uppercase tracking-widest mb-4">
-              Skysafari
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  The SkySafari Experience
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Safari Extensions & Additions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Conservation & Sustainability
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Special Offers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="font-bold text-white">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Column 2 - Breathtaking Adventures */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h3 className="text-[#d4a373] font-semibold uppercase tracking-widest mb-4">
-              Breathtaking Adventures
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white">
-                  SkySafari Kenya
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  SkySafari Tanzania
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  SkySafari East Africa
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Column 3 - News & Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h3 className="text-[#d4a373] font-semibold uppercase tracking-widest mb-4">
-              News & Information
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="#" className="hover:text-white">
-                  Travel Information
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Flight Luggage Guidelines
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Frequently Asked Questions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Booking Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Downloads
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  Subscribe
-                </a>
-              </li>
-            </ul>
-          </motion.div>
+          {footerMenu.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{
+                opacity: 0,
+                x: index === 0 ? -30 : index === 2 ? 30 : 0,
+              }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+            >
+              <h3 className="text-[#d4a373] font-semibold uppercase tracking-widest mb-4">
+                {category.title}
+              </h3>
+              <ul className="space-y-2 text-sm">
+                {category.links.map((link, i) => (
+                  <li key={i}>
+                    <Link href={link.path} className="hover:text-white block">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
 
         {/* Contact Info & Social Icons */}

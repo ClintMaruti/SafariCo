@@ -1,33 +1,50 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { FiMenu } from "react-icons/fi";
 
 const menuItems = [
   {
     title: "SkySafari",
     links: [
-      "Home",
-      "The SkySafari Experience",
-      "Safari Extensions & Additions",
-      "Conservation & Sustainability",
-      "Special Offers",
-      "Contact Us",
+      { name: "Home", path: "/" },
+      { name: "The SkySafari Experience", path: "/skysafari-experience" },
+      {
+        name: "Safari Extensions & Additions",
+        path: "/extensions-and-additions",
+      },
+      {
+        name: "Conservation & Sustainability",
+        path: "/conservation-and-sustainability",
+      },
+      { name: "Special Offers", path: "/special-offers" },
+      { name: "Contact Us", path: "/contact-us" },
     ],
   },
   {
     title: "Breathtaking Adventures",
-    links: ["SkySafari Kenya", "SkySafari Tanzania", "SkySafari East Africa"],
+    links: [
+      { name: "SkySafari Kenya", path: "/skysafari-kenya" },
+      { name: "SkySafari Tanzania", path: "/skysafari-tanzania" },
+      { name: "SkySafari East Africa", path: "/skysafari-east-africa" },
+    ],
   },
   {
     title: "News & Information",
     links: [
-      "Travel Information",
-      "Flight Luggage Guidelines",
-      "Frequently Asked Questions",
-      "Booking Terms & Conditions",
-      "Downloads",
-      "Subscribe",
+      { name: "Travel Information", path: "/travel-information" },
+      { name: "Flight Luggage Guidelines", path: "/flight-luggage-guidelines" },
+      {
+        name: "Frequently Asked Questions",
+        path: "/frequently-asked-questions",
+      },
+      {
+        name: "Booking Terms & Conditions",
+        path: "/booking-terms-and-conditions",
+      },
+      { name: "Downloads", path: "/downloads" },
+      { name: "Subscribe", path: "/subscribe" },
     ],
   },
 ];
@@ -36,7 +53,8 @@ export const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute top-0 left-0 w-full flex justify-between items-center p-6 bg-black/50 text-white z-20">
+    <nav className="absolute top-0 left-0 w-full flex justify-between items-center p-6 bg-black/50 text-white">
+      {/* Logo */}
       <div className="flex items-center gap-4">
         <Image
           src="/images/skysafari-logo-full-01.svg"
@@ -46,6 +64,8 @@ export const NavBar = () => {
           priority
         />
       </div>
+
+      {/* Menu + Enquire Button */}
       <div className="flex items-center gap-4">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -64,21 +84,26 @@ export const NavBar = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="absolute top-24 left-0 w-full bg-black/80 text-white p-6 shadow-lg"
+          className="absolute top-24 left-0 w-full bg-black/90 text-white p-6"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {menuItems.map((category, index) => (
               <div key={index}>
-                <h2 className="text-lg font-semibold border-b border-white/30 pb-2 text-[#b4a269]">
+                <h2
+                  className="text-lg font-semibold pb-2"
+                  style={{ color: "#b4a269" }}
+                >
                   {category.title}
                 </h2>
                 <ul className="mt-2 space-y-2">
                   {category.links.map((link, i) => (
-                    <li
-                      key={i}
-                      className="hover:text-gray-300 cursor-pointer transition-colors"
-                    >
-                      {link}
+                    <li key={i}>
+                      <Link
+                        href={link.path}
+                        className="hover:text-gray-300 cursor-pointer block"
+                      >
+                        {link.name}
+                      </Link>
                     </li>
                   ))}
                 </ul>
