@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 
 export default function SkySafariExperience() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  // const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const aircraft_images = [
@@ -167,7 +167,7 @@ export default function SkySafariExperience() {
       <ImageModal
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        selectedImage={selectedImage}
+        // selectedImage={selectedImage}
       />
 
       <ContactUsSection />
@@ -209,11 +209,9 @@ const MidSection = () => {
 const ImageModal = ({
   isOpen,
   setIsOpen,
-  selectedImage,
 }: {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
-  selectedImage: string | null;
 }) => {
   return (
     <Dialog
@@ -229,9 +227,9 @@ const ImageModal = ({
         >
           ✕
         </button>
-        {selectedImage && (
+        {/* {selectedImage && (
           <img src={selectedImage} alt="Gallery" className="w-full" />
-        )}
+        )} */}
       </div>
     </Dialog>
   );
