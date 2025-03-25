@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const SafariSections = () => {
   return (
@@ -39,13 +40,13 @@ export const SafariSections = () => {
         </motion.p>
 
         {/* Animated Button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-          className="mt-8 bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg"
-        >
-          EXPLORE MORE
-        </motion.button>
+        <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+          <Link href="/skysafari-experience" passHref>
+            <motion.a className="mt-8 bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg">
+              EXPLORE MORE
+            </motion.a>
+          </Link>
+        </motion.div>
       </div>
     </motion.section>
   );

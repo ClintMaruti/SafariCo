@@ -2,19 +2,23 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const safariDestinations = [
   {
     title: "SkySafari Kenya",
     image: "/images/kenya-01.jpg",
+    link: "/skysafari-kenya",
   },
   {
     title: "SkySafari Tanzania",
     image: "/images/kenya-02.jpg",
+    link: "/skysafari-tanzania",
   },
   {
     title: "SkySafari East Africa",
     image: "/images/Tz-01.jpg",
+    link: "/skysafari-east-africa",
   },
 ];
 
@@ -61,12 +65,16 @@ export const Destinations = () => {
               >
                 {destination.title}
               </motion.h2>
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.1 }}
-                className="px-6 py-2 border border-white text-white text-sm font-semibold tracking-widest rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black"
+                whileTap={{ scale: 0.95 }}
               >
-                EXPLORE
-              </motion.button>
+                <Link href={destination.link} passHref>
+                  <motion.a className="px-6 py-2 border border-white text-white text-sm font-semibold tracking-widest rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black">
+                    EXPLORE
+                  </motion.a>
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         ))}
