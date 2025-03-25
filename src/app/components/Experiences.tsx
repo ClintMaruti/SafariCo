@@ -66,7 +66,9 @@ export const Experiences = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="text-center"
       >
-        <h2 className="text-4xl font-bold mt-2">Exceptional Experiences</h2>
+        <h2 className="text-4xl font-bold mt-2 text-gray-800">
+          Exceptional Experiences
+        </h2>
         <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
           We offer unique tours with local expertise, premium services, and
           countless unforgettable moments designed just for you.
@@ -130,7 +132,7 @@ const FeatureCard = ({
     >
       <motion.div whileHover={{ scale: 1.1 }}>{icon}</motion.div>
       <div className="ml-4 flex flex-col justify-between h-full">
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
         <p className="text-gray-600 text-sm">{description}</p>
       </div>
     </motion.div>

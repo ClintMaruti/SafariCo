@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Contacts = () => {
   return (
@@ -45,7 +46,7 @@ export const Contacts = () => {
                 <input
                   type="text"
                   placeholder="e.g. John Doe"
-                  className="w-full mt-1 px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
+                  className="w-full text-gray-500  mt-1 px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
                 />
               </motion.div>
 
@@ -61,7 +62,7 @@ export const Contacts = () => {
                 <input
                   type="email"
                   placeholder="e.g. hello@example.com"
-                  className="w-full mt-1 px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
+                  className="w-full mt-1 px-4 text-gray-500 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
                 />
               </motion.div>
 
@@ -77,7 +78,7 @@ export const Contacts = () => {
                 <textarea
                   placeholder="Type your message here"
                   rows={4}
-                  className="w-full mt-1 px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
+                  className="w-full mt-1 text-gray-500 px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#a87c5d] focus:outline-none transition-all duration-300"
                 />
               </motion.div>
 
