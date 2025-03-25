@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-
+import { NavBar } from "./NavBar";
 interface HeroSectionProps {
   imageUrl: string;
   title: string;
@@ -14,6 +14,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   return (
     <section className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:[500px] xl:h-[600px] 2xl:h-[700px] bg-black">
+      {/* Navbar */}
+      <div className="relative z-10">
+        <NavBar />
+      </div>
       {/* Background Image */}
       <Image
         src={imageUrl}

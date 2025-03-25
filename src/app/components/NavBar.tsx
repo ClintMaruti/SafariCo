@@ -56,17 +56,19 @@ export const NavBar = () => {
     <nav className="absolute top-0 left-0 w-full flex justify-between items-center p-6 bg-black/50 text-white">
       {/* Logo */}
       <div className="flex items-center gap-4">
-        <Image
-          src="/images/skysafari-logo-full-01.svg"
-          alt="SkySafari Logo"
-          width={200}
-          height={50}
-          priority
-        />
+        <Link href="/" className="cursor-pointer">
+          <Image
+            src="/images/SkySafari-Logo-01.svg"
+            alt="SkySafari Logo"
+            width={200}
+            height={50}
+            priority
+          />
+        </Link>
       </div>
 
       {/* Menu + Enquire Button */}
-      <div className="flex items-center gap-4">
+      <div className="hidden sm:flex sm:items-center sm:gap-4">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 rounded-full bg-white/10 hover:bg-white/20 cursor-pointer"
