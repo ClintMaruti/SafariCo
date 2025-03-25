@@ -68,14 +68,14 @@ export const NavBar = () => {
       </div>
 
       {/* Menu + Enquire Button */}
-      <div className="hidden sm:flex sm:items-center sm:gap-4">
+      <div className="flex items-center gap-4">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 rounded-full bg-white/10 hover:bg-white/20 cursor-pointer"
         >
           <FiMenu className="text-white text-2xl" />
         </button>
-        <button className="bg-[#b4a269] px-6 py-2 rounded-full text-white text-sm tracking-widest transform transition-transform hover:scale-110 cursor-pointer">
+        <button className="hidden sm:block bg-[#b4a269] px-6 py-2 rounded-full text-white text-sm tracking-widest transform transition-transform hover:scale-110 cursor-pointer">
           ENQUIRE
         </button>
       </div>
