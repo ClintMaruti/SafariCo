@@ -1,7 +1,4 @@
 "use client";
-
-import Image from "next/image";
-import { FaPlay, FaPhone } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { VideoSection } from "./VideoSction";
 
