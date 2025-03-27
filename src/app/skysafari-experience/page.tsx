@@ -1,13 +1,34 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ContactUsSection } from "../components/ContactUsSection";
-import { Footer } from "../components/Footer";
-import { useState } from "react";
 import { Dialog } from "@headlessui/react";
+import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default function SkySafariExperience() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // ✅ Ensures component is only rendered on the client
+  }, []);
+
+  if (!isClient) return null; // Prevents SSR issues
+
+  // Close Modal
+  const closeModal = () => setSelectedIndex(null);
+
+  // Navigate Images
+  const prevImage = () =>
+    setSelectedIndex((prev) =>
+      prev !== null && prev > 0 ? prev - 1 : aircraft_images.length - 1
+    );
+  const nextImage = () =>
+    setSelectedIndex((prev) =>
+      prev !== null && prev < aircraft_images.length - 1 ? prev + 1 : 0
+    );
 
   const aircraft_images = [
     { src: "/images/ss_aircraft_01.jpg", title: "Luxury Sky Safari" },
@@ -54,10 +75,10 @@ export default function SkySafariExperience() {
       />
 
       <section className="container max-w-3/4 mx-auto py-16">
-        <h2 className="text-center text-4xl text-gray-400 ">
+        <h2 className="text-center text-4xl text-gray-400">
           A SkySafari is more than a holiday.
         </h2>
-        <p className="text-center mt-4 text-sm text-gray-600 leading-10">
+        <p className="text-center text-sm md:text-base text-gray-600 leading-6 md:leading-8 lg:leading-10 py-4">
           It’s an immersion. Our expertly designed East African safari luxury
           tours will whisk you right into the most spine-tingling, hair-
           raising, mind-blowing wilderness. We’ll ease you through airports,
@@ -94,38 +115,89 @@ export default function SkySafariExperience() {
         </div>
       </motion.section>
 
-      <section className="mt-12 container mx-auto">
-        <h2 className="text-3xl font-light text-center mb-8">
+      <section className="mt-12 container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-light text-center mb-6 text-gray-400">
           Flying with us – Our Aircraft
         </h2>
-        <p className="text-center mt-4 text-sm text-gray-600 leading-10">
+        <p className="text-center text-sm md:text-base text-gray-600 leading-6 md:leading-8 lg:leading-10 max-w-4xl mx-auto">
           Want to travel like a VIP? Each of our small fleet of executive-class
-          planes has an air of opulence and exclusivity: huge white-leather
-          seats, a generous luggage allowance and a maximum of only nine
-          passengers (with one seat next to the pilot). They undergo rigorous
-          and regular maintenance, too. But we won’t simply fly you in safety
-          and style – we’ll save you time. O ur flights are private, personal
-          and direct: there’s no needless waiting or stops en route, you’ll be
-          whisked straight into the wilderness.
+          planes has an air of opulence and exclusivity...
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
+
+        {/* ✅ Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6">
           {aircraft_images.map((item, index) => (
-            <div key={index} className="relative group">
+            <div
+              key={index}
+              className="relative group cursor-pointer"
+              onClick={() => setSelectedIndex(index)}
+            >
               <img
                 src={item.src}
                 alt={item.title}
-                className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
+                className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
               />
             </div>
           ))}
         </div>
+
+        {/* ✅ Modal for Image Preview */}
+        {selectedIndex !== null && (
+          <Dialog
+            open={selectedIndex !== null}
+            onClose={closeModal}
+            className="fixed inset-0 z-50 flex items-center justify-center"
+          >
+            {/* Overlay */}
+            <div className="fixed inset-0 bg-black bg-opacity-80" />
+
+            {/* Modal Content */}
+            <div className="relative max-w-4xl w-full flex flex-col items-center">
+              {/* Close Button (Positioned in Top-Right) */}
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 md:right-6 text-white bg-black/50 p-2 rounded-full hover:bg-black/70 transition"
+              >
+                <AiOutlineClose className="w-6 h-6 md:w-8 md:h-8" />
+              </button>
+
+              {/* Image & Navigation */}
+              <div className="relative flex items-center w-full">
+                {/* Left Arrow (Centered Vertically) */}
+                <button
+                  onClick={prevImage}
+                  className="absolute left-2 sm:left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+                >
+                  <AiOutlineLeft className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+
+                {/* Image */}
+                {selectedIndex !== null && (
+                  <img
+                    src={aircraft_images[selectedIndex].src}
+                    alt={aircraft_images[selectedIndex].title}
+                    className="max-w-[90%] max-h-[75vh] md:max-h-[80vh] rounded-lg shadow-lg"
+                  />
+                )}
+
+                {/* Right Arrow (Centered Vertically) */}
+                <button
+                  onClick={nextImage}
+                  className="absolute right-2 sm:right-4 md:right-6 top-1/2 transform -translate-y-1/2 text-white p-2 bg-black/50 rounded-full hover:bg-black/70 transition"
+                >
+                  <AiOutlineRight className="w-6 h-6 md:w-8 md:h-8" />
+                </button>
+              </div>
+            </div>
+          </Dialog>
+        )}
       </section>
 
-      <section className="mt-12 container mx-auto">
-        <h2 className="text-3xl font-light text-center mb-8">
+      <section className="mt-12 container max-w-3/4 mx-auto">
+        <h2 className="text-3xl font-light text-center mb-8 text-gray-400">
           Led by the best – Our Guides
         </h2>
-        <p className="text-center mt-4 text-sm text-gray-600 leading-10">
+        <p className="text-center text-sm md:text-base text-gray-600 leading-6 md:leading-8 lg:leading-10 ">
           The right guide will elevate your safari from good to truly great.
           Which is why we employ some of the best in the business. Each of our
           guides is highly qualified, hugely knowledgeable and endlessly
@@ -137,11 +209,11 @@ export default function SkySafariExperience() {
         </p>
       </section>
 
-      <section className="mt-12 container mx-auto">
-        <h2 className="text-3xl font-light text-center mb-8">
+      <section className="mt-12 container max-w-3/4 mx-auto">
+        <h2 className="text-3xl font-light text-center mb-8 text-gray-400">
           Stay in style – The Elewana Collection
         </h2>
-        <p className="text-center mt-4 text-sm text-gray-600 leading-10">
+        <p className="text-center text-sm md:text-base text-gray-600 leading-6 md:leading-8 lg:leading-10">
           We deliver you to the best accommodation on every leg of the trip. Our
           partner, and sister company, The Elewana Collection, is a collection
           of unique, boutique lodges, camps and hotels in Kenya and Tanzania,
@@ -152,7 +224,7 @@ export default function SkySafariExperience() {
           attention to detail, luxury with a light environmental touch and some
           of the best food you’ll eat in East Africa.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
           {accomodation_images.map((item, index) => (
             <div key={index} className="relative group">
               <img
@@ -165,44 +237,9 @@ export default function SkySafariExperience() {
         </div>
       </section>
 
-      <ImageModal
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        // selectedImage={selectedImage}
-      />
-
       <ContactUsSection />
 
       <Footer />
     </main>
   );
 }
-
-const ImageModal = ({
-  isOpen,
-  setIsOpen,
-}: {
-  isOpen: boolean;
-  setIsOpen: (value: boolean) => void;
-}) => {
-  return (
-    <Dialog
-      open={isOpen}
-      onClose={() => setIsOpen(false)}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
-    >
-      <div className="fixed inset-0 bg-black/50" aria-hidden="true" />
-      <div className="relative bg-white rounded-lg overflow-hidden max-w-2xl w-full">
-        <button
-          className="absolute top-2 right-2 bg-gray-200 rounded-full p-1 text-gray-600 hover:bg-gray-300"
-          onClick={() => setIsOpen(false)}
-        >
-          ✕
-        </button>
-        {/* {selectedImage && (
-          <img src={selectedImage} alt="Gallery" className="w-full" />
-        )} */}
-      </div>
-    </Dialog>
-  );
-};
