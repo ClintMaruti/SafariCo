@@ -45,10 +45,12 @@ export const SafariSections = () => {
           transition={{ duration: 0.3 }}
           className="mt-8"
         >
-          <Link href="/skysafari-experience" passHref>
-            <motion.a className="mt-8 bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg">
-              EXPLORE MORE
-            </motion.a>
+          <Link
+            href="/skysafari-experience"
+            passHref
+            className="mt-8 bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg"
+          >
+            EXPLORE MORE
           </Link>
         </motion.div>
       </div>

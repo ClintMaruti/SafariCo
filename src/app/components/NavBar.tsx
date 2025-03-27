@@ -75,9 +75,12 @@ export const NavBar = () => {
         >
           <FiMenu className="text-white text-2xl" />
         </button>
-        <button className="hidden sm:block bg-[#b4a269] px-6 py-2 rounded-full text-white text-sm tracking-widest transform transition-transform hover:scale-110 cursor-pointer">
+        <Link
+          href="/plan-your-trip"
+          className="hidden sm:block bg-[#b4a269] px-6 py-2 rounded-full text-white text-sm tracking-widest transform transition-transform hover:scale-110 cursor-pointer"
+        >
           ENQUIRE
-        </button>
+        </Link>
       </div>
 
       {/* Dropdown Menu */}

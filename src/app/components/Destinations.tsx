@@ -69,10 +69,12 @@ export const Destinations = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link href={destination.link} passHref>
-                  <motion.a className="px-6 py-2 border border-white text-white text-sm font-semibold tracking-widest rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black">
-                    EXPLORE
-                  </motion.a>
+                <Link
+                  href={destination.link}
+                  passHref
+                  className="px-6 py-2 border border-white text-white text-sm font-semibold tracking-widest rounded-full transition-all duration-300 group-hover:bg-white group-hover:text-black"
+                >
+                  EXPLORE
                 </Link>
               </motion.div>
             </div>
