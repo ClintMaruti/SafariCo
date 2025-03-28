@@ -58,8 +58,8 @@ export default function EastAfrica() {
           <Image
             src="/images/Loisaba-Sundowners.jpg"
             alt="Kenya"
-            layout="fill"
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/50"></div>
           <div className="absolute inset-0 top-0 flex flex-col justify-center items-center gap-6">

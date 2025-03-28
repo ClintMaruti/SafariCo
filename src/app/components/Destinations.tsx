@@ -45,18 +45,15 @@ export const Destinations = () => {
             transition={{ duration: 0.8, delay: index * 0.3 }}
             className="relative group w-full md:w-1/3 h-[350px] overflow-hidden rounded-lg shadow-lg"
           >
-            {/* Background Image */}
+            {/* Background Image */}S
             <Image
               src={destination.image}
               alt={destination.title}
-              layout="fill"
-              objectFit="cover"
-              className="transition-transform duration-500 group-hover:scale-105"
+              fill
+              className="transition-transform duration-500 group-hover:scale-105 object-cover"
             />
-
             {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-all duration-500"></div>
-
             {/* Text & Button */}
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
               <motion.h2

@@ -22,9 +22,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <Image
         src={imageUrl}
         alt="cover image"
-        layout="fill"
-        objectFit="cover"
-        className="absolute inset-0"
+        fill
+        className="absolute inset-0 object-cover"
       />
 
       {/* Enhanced Gradient Overlay */}

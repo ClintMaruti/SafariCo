@@ -4,9 +4,9 @@ import {
   Experiences,
   SafariSections,
   Destinations,
-  Contacts,
   Footer,
 } from "./components";
+import { PlanYourHoliday } from "./components/PlanYourHoliday";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Destinations />
       <Experiences />
       <SafariSections />
-      <Contacts />
+      <PlanYourHoliday />
       <Footer />
     </main>
   );

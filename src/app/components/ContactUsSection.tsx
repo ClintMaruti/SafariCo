@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const ContactUsSection = () => {
   return (
@@ -21,13 +22,18 @@ export const ContactUsSection = () => {
           generations. Want to know more about how we do both? Get in touch with
           our expert team.
         </p>
-        <motion.button
+        <motion.div
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
-          className=" max-w-1/2 mx-auto bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg"
+          className="max-w-1/2 mx-auto"
         >
-          CONTACT US
-        </motion.button>
+          <Link
+            href="/plan-your-trip"
+            className=" bg-[#b4a269] hover:bg-[#a08a5e] text-white font-normal px-8 py-3 rounded-full transition-transform duration-300 shadow-lg"
+          >
+            CONTACT US
+          </Link>
+        </motion.div>
       </div>
     </motion.section>
   );

@@ -19,9 +19,8 @@ export const VideoSection = () => {
           <Image
             src="/images/bush-breakfast.jpg"
             alt="Bush Breakfast"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
+            fill
+            className="rounded-lg object-cover"
           />
 
           {/* Play Button */}
@@ -51,9 +50,8 @@ export const VideoSection = () => {
             <Image
               src="/images/bush-breakfast.jpg"
               alt="Bush Breakfast"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              fill
+              className="rounded-lg object-cover"
             />
           </div>
 

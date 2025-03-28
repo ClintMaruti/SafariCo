@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface CardProps {
   image: string;
@@ -9,10 +10,12 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ image, title, content }) => {
   return (
     <div className="w-full h-full overflow-hidden rounded-lg shadow-lg">
-      <img
+      <Image
         src={image}
         alt={title}
-        className="w-[1080px] h-[540px] object-cover"
+        width={1080}
+        height={540}
+        className="object-cover"
       />
       <div className="absolute rounded-lg top-0 bg-black/80 p-4 text-white w-full h-full flex flex-col items-center justify-center gap-2">
         <h1 className="text-3xl font-normal text-center">{title}</h1>

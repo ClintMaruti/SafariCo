@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Contacts = () => {
   return (
@@ -100,10 +101,11 @@ export const Contacts = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="hidden md:flex flex-1"
         >
-          <img
+          <Image
             src="/images/Tz-01.jpg"
             alt="Safari family"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </motion.div>
       </div>

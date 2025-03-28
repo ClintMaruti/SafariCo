@@ -6,6 +6,7 @@ import { Dialog } from "@headlessui/react";
 import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import Image from "next/image";
 
 export default function SkySafariExperience() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -129,13 +130,14 @@ export default function SkySafariExperience() {
           {aircraft_images.map((item, index) => (
             <div
               key={index}
-              className="relative group cursor-pointer"
+              className="relative group cursor-pointer w-full h-48 sm:h-56 md:h-64"
               onClick={() => setSelectedIndex(index)}
             >
-              <img
+              <Image
                 src={item.src}
                 alt={item.title}
-                className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
+                fill
+                className="object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
               />
             </div>
           ))}
@@ -173,9 +175,10 @@ export default function SkySafariExperience() {
 
                 {/* Image */}
                 {selectedIndex !== null && (
-                  <img
+                  <Image
                     src={aircraft_images[selectedIndex].src}
                     alt={aircraft_images[selectedIndex].title}
+                    fill
                     className="max-w-[90%] max-h-[75vh] md:max-h-[80vh] rounded-lg shadow-lg"
                   />
                 )}
@@ -226,11 +229,12 @@ export default function SkySafariExperience() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 py-3">
           {accomodation_images.map((item, index) => (
-            <div key={index} className="relative group">
-              <img
+            <div key={index} className="relative group w-full h-64">
+              <Image
                 src={item.src}
                 alt={item.title}
-                className="w-full h-64 object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
+                fill
+                className=" object-cover rounded-lg shadow-lg group-hover:opacity-75 transition"
               />
             </div>
           ))}

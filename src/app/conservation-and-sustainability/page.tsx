@@ -1,5 +1,5 @@
 "use client";
-import { ConservationCarousel } from "./ConservationCarousel";
+import { ConservationSection } from "./ConservationSection";
 import { Sustainability } from "./Sustainability";
 import { ContactUsSection } from "../components/ContactUsSection";
 import { Footer } from "../components/Footer";
@@ -12,7 +12,8 @@ export default function Conservation() {
         title="Conservation & Sustainability"
         imageUrl="/images/Rhino-Sunset.jpg"
       />
-      <ConservationCarousel />
+      <ConservationSection />
+      <hr className="w-sm mx-auto my-4 border-gray-400 hidden sm:flex" />
       <Sustainability />
       <ContactUsSection />
       <Footer />

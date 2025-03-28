@@ -44,13 +44,13 @@ export default function FlightLuggageGuidelines() {
       </motion.section>
       <section className="container mx-auto py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          <div className="flex flex-col items-center justify-center gap-4 text-[#B4A269] border-r border-[#B4A269]">
+          <div className="flex flex-col w-full items-center justify-center gap-4 text-[#B4A269] border-r border-[#B4A269]">
             <Image
               src="/images/Luggage-Permited.jpg"
               alt="Permitted Images"
               width={300}
               height={100}
-              objectFit="cover"
+              className="object-cover"
             />
             <BiCheckCircle />
             <p>Permiited Luggage</p>
@@ -61,7 +61,7 @@ export default function FlightLuggageGuidelines() {
               alt="Permitted Images"
               width={300}
               height={100}
-              objectFit="cover"
+              className="object-cover"
             />
             <BiXCircle />
             <p>Non Permiited Luggage</p>
@@ -106,7 +106,7 @@ export default function FlightLuggageGuidelines() {
               alt="Luggage Specifications"
               width={300}
               height={100}
-              objectFit="cover"
+              className="object-cover"
             />
           </div>
         </div>
